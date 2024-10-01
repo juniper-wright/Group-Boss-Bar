@@ -26,7 +26,7 @@
   ],
   "url": "https://github.com/juniper-wright/Boss-Bar",
   "manifest": "https://raw.githubusercontent.com/juniper-wright/Group-Boss-Bar/refs/heads/master/module.json",
-  "download": "https://github.com/juniper-wright/Group-Boss-Bar/archive/refs/tags/v1.0.0.zip",
+  "download": "https://github.com/juniper-wright/Group-Boss-Bar/releases/latest/download/module.zip",
   "socket": true,
   "id": "groupbossbar",
   "relationships": {
