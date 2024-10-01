@@ -2,8 +2,8 @@ import {Socket} from "./lib/socket.js";
 
 export class BossBar {
     constructor() {
-        this.actor;
-        this.token;
+        this.actors;
+        this.tokens;
         this.bgPath = game.settings.get("bossbar", "backgroundPath");
         this.fgPath = game.settings.get("bossbar", "foregroundPath");
         this.tempBarColor = game.settings.get("bossbar", "tempBarColor");
@@ -11,10 +11,10 @@ export class BossBar {
         this.position = game.settings.get("bossbar", "position");
     }
 
-    static async create(token, render = true) {
+    static async create(tokens, render = true) {
         let instance = new BossBar();
-        instance.actor = token.actor;
-        instance.token = token;
+        instance.actors = tokens.map((token) => token.actor);
+        instance.tokens = tokens;
         let bgFlag = token.document.getFlag("bossbar", "bgTex");
         let fgFlag = token.document.getFlag("bossbar", "fgTex");
         if (bgFlag) instance.bgPath = bgFlag;
@@ -31,7 +31,10 @@ export class BossBar {
             await canvas.scene.setFlag("bossbar", "bossBarActive", oldBars);
         }
         instance.hookId = Hooks.on("updateActor", (actor, updates) => {
-            if (actor.id == instance.actor.id && foundry.utils.getProperty(updates.system, game.settings.get("bossbar", "currentHpPath")) !== undefined) {
+            if (
+                instance.actors.map((a) => a.id).includes(actor.id) &&
+                foundry.utils.getProperty(updates.system, game.settings.get("bossbar", "currentHpPath")) !== undefined
+            ) {
                 instance.update();
             }
         });
@@ -198,11 +201,17 @@ export class BossBar {
     }
 
     get currentHp() {
-        return foundry.utils.getProperty(this.actor.system, game.settings.get("bossbar", "currentHpPath"));
+        return this.actors.reduce((acc, actor) => {
+            acc += foundry.utils.getProperty(actor.system, game.settings.get("bossbar", "currentHpPath"));
+            return acc;
+        }, 0);
     }
 
     get maxHp() {
-        return foundry.utils.getProperty(this.actor.system, game.settings.get("bossbar", "maxHpPath"));
+        return this.actors.reduce((acc, actor) => {
+            acc += foundry.utils.getProperty(actor.system, game.settings.get("bossbar", "maxHpPath"));
+            return acc;
+        }, 0);
     }
 
     get hpPercent() {

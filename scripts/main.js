@@ -139,19 +139,16 @@ Hooks.on("getSceneControlButtons", (controls, b, c) => {
     controls
         .find((c) => c.name == "token")
         .tools.push({
-            name: "bossBar",
+            name: "groupBossBar",
             title: game.i18n.localize("bossbar.controls.bossUI.name"),
-            icon: "fas fa-pastafarianism",
+            icon: "fas fa-locust",
             toggle: true,
             visible: game.user.isGM,
             active: isBoss,
             onClick: async (toggle) => {
                 if (toggle) {
                     if (canvas.tokens.controlled[0]) {
-                        for (let token of canvas.tokens.controlled) {
-                            await BossBar.create(token);
-                            if (game.settings.get("bossbar", "cameraPan")) BossBar.panCamera(token);
-                        }
+                        await BossBar.create(canvas.tokens.controlled);
                     } else {
                         ui.notifications.warn(game.i18n.localize("bossbar.controls.bossUI.warn"));
                     }

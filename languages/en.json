@@ -1,5 +1,5 @@
 {
-    "bossbar.controls.bossUI.name":"Toggle Boss Bar",
+    "bossbar.controls.bossUI.name":"Toggle Group Boss Bar",
     "bossbar.controls.bossUI.warn":"No token selected. Please select one or multiple tokens and try again",
     "bossbar.settings.currentHpPath.name":"Current HP Path",
     "bossbar.settings.currentHpPath.hint":"Data path to the current hp of an actor",
