@@ -1,6 +1,6 @@
 {
-  "title": "Boss Bar",
-  "description": "Add a souls-like boss healthbar to the scene",
+  "title": "Group Boss Bar",
+  "description": "Add a souls-like boss healthbar to the scene for a group of enemies",
   "version": "0.1",
   "authors": [
     {
@@ -14,36 +14,6 @@
       "lang": "en",
       "name": "English",
       "path": "languages/en.json"
-    },
-    {
-      "lang": "es",
-      "name": "Español",
-      "path": "languages/es.json"
-    },
-    {
-      "lang": "pt",
-      "name": "Português",
-      "path": "languages/pt.json"
-    },
-    {
-      "lang": "pt-BR",
-      "name": "Português (Brasil)",
-      "path": "languages/pt-BR.json"
-    },
-    {
-      "lang": "pt-PT",
-      "name": "Português (Portugal)",
-      "path": "languages/pt-PT.json"
-    },
-    {
-      "lang": "de",
-      "name": "Deutsch",
-      "path": "languages/de.json"
-    },
-    {
-      "lang": "ja",
-      "name": "日本語",
-      "path": "languages/ja.json"
     }
   ],
   "esmodules": [
